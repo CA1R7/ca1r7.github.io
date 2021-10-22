@@ -62,7 +62,7 @@ export const Header: FC = () => {
               <TextAnimation id="pargph" active={navbar_activated}>
                 <span>17 y/o</span>. TS/JS Developer &amp; UI/UX Designer, Mohammed Amine (
                 <span>cairbyte71</span>) from Algeria still studing foreign languages (
-                <span>germany</span>) also learning programing.
+                <span>Deutsch</span>) also learning programing.
               </TextAnimation>
               <TextAnimation id="links" active={navbar_activated}>
                 Links:
