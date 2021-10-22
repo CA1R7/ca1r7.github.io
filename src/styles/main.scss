@@ -35,6 +35,17 @@ body {
       margin: 10px;
       @include gradientText();
     }
+    #routes-buttons {
+      display: flex;
+      .button {
+        font-size: 15px;
+        margin: 10px;
+        cursor: pointer;
+        &:hover {
+          color: $primary-white-color;
+        }
+      }
+    }
   }
   header {
     width: 100%;
@@ -96,7 +107,6 @@ body {
               margin-top: 20px;
               color: $primary-white-color;
               span {
-                margin: 0 0 0 5px;
                 color: $primary-hidden-color;
                 cursor: pointer;
                 border-bottom: 1px solid #7000cc;
