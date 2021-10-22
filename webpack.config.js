@@ -14,7 +14,7 @@ module.exports = {
     path: buildPath,
     filename: "bundle.js",
   },
-  mode: process.env.mode,
+  mode: process.env.mode.trim(),
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
