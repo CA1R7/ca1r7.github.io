@@ -21,7 +21,7 @@ export const Projects: FC = () => {
     {
       alive: true,
       cover: "https://i.imgur.com/bq0mPSY.png",
-      date: 2018,
+      date: 2021,
       description: "A cigar client edited & multiogar servers (ffa, self-feed, mega).",
       name: "Agar-ev",
       link: "https://agar-ev.xyz",
