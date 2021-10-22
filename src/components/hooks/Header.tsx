@@ -36,8 +36,19 @@ const ImageAnimation = styled.img<{ active: boolean }>`
   transition: 1s cubic-bezier(0.86, 0, 0.07, 1);
 `;
 
+interface LinksType {
+  title: string;
+  link: string | URL;
+}
+
 export const Header: FC = () => {
   const { navbar_activated } = useSelector<StateInterface, HeaderReducer>(({ header }) => header);
+
+  const links: LinksType[] = [
+    { title: "Github", link: "https://github.com/CA1R7" },
+    { title: "LinkedIn", link: "https://www.linkedin.com/in/mohammed-amine-3490061a5" },
+  ];
+
   return (
     <header>
       <div id="content">
@@ -54,7 +65,15 @@ export const Header: FC = () => {
                 <span>germany</span>) also learning programing.
               </TextAnimation>
               <TextAnimation id="links" active={navbar_activated}>
-                Links: <span>Facebook</span> - <span>Instgrame</span> - <span>LinkedIn</span>
+                Links:
+                {links.map((link, i) => (
+                  <>
+                    {i > 0 ? " - " : " "}
+                    <span onClick={() => window.open(link.link)} key={i}>
+                      {link.title}
+                    </span>
+                  </>
+                ))}
               </TextAnimation>
             </div>
           </div>
