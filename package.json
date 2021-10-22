@@ -7,7 +7,7 @@
     "dev": "webpack serve",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
-    "build": "webpack"
+    "build": "SET mode=production && webpack"
   },
   "keywords": [],
   "author": "cairbyte71",
