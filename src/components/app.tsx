@@ -1,10 +1,10 @@
-import React, { FC, useEffect, Suspense } from "react";
-import { Header, LinksType } from "./hooks/Header";
-import { SideBar, SideBarButtons } from "./hooks/SideBar";
+import React, { FC, useEffect, Suspense, lazy } from "react";
+import { LinksType } from "./hooks/Header";
+import { SideBarButtons } from "./hooks/SideBar";
 import { Dispatch, StateInterface } from "../redux";
 import { useDispatch, useSelector } from "react-redux";
 import { HeaderReducer } from "../redux/reducers/activited/header";
-import { Projects, ProjectsType } from "./hooks/Projects";
+import { ProjectsType } from "./hooks/Projects";
 import { Footer } from "./hooks/Footer";
 import { Loader } from "./hooks/Loader";
 
@@ -16,6 +16,10 @@ interface GeneraleData {
   header_links: LinksType[];
   projects: ProjectsType[];
 }
+
+const Header = lazy(() => import("./hooks/Header"));
+const SideBar = lazy(() => import("./hooks/SideBar"));
+const Projects = lazy(() => import("./hooks/Projects"));
 
 export const Initialize: FC = () => {
   const { navbar_activated } = useSelector<StateInterface, HeaderReducer>(({ header }) => header);
