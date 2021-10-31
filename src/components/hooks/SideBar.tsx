@@ -16,7 +16,7 @@ const SideBarComponent = styled.div<{ active: boolean }>`
   visibility: ${({ active }) => (active ? "unset" : "hidden")};
 `;
 
-export const SideBar: FC<SideBarProps> = ({ active, sidebar_buttons, author }) => {
+const SideBar: FC<SideBarProps> = ({ active, sidebar_buttons, author }): JSX.Element => {
   return (
     <SideBarComponent id="side-bar" active={active}>
       <div id="logo">{author}</div>
@@ -30,3 +30,5 @@ export const SideBar: FC<SideBarProps> = ({ active, sidebar_buttons, author }) =
     </SideBarComponent>
   );
 };
+
+export default SideBar;

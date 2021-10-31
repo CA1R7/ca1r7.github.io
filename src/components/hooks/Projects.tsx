@@ -18,7 +18,7 @@ interface ProjectsProps {
   projects: ProjectsType[];
 }
 
-export const Projects: FC<ProjectsProps> = ({ projects }) => {
+const Projects: FC<ProjectsProps> = ({ projects }): JSX.Element => {
   const { projects_side } = useSelector<StateInterface, HeaderReducer>(({ header }) => header);
 
   return (
@@ -36,3 +36,5 @@ export const Projects: FC<ProjectsProps> = ({ projects }) => {
     </div>
   );
 };
+
+export default Projects;

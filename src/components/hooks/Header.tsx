@@ -47,7 +47,7 @@ interface HeaderProps {
   links: LinksType[];
 }
 
-export const Header: FC<HeaderProps> = ({ links, description, mine_image }): JSX.Element => {
+const Header: FC<HeaderProps> = ({ links, description, mine_image }): JSX.Element => {
   const { navbar_activated } = useSelector<StateInterface, HeaderReducer>(({ header }) => header);
 
   return (
@@ -88,3 +88,5 @@ export const Header: FC<HeaderProps> = ({ links, description, mine_image }): JSX
     </header>
   );
 };
+
+export default Header;
