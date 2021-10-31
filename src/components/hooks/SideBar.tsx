@@ -1,25 +1,31 @@
-import React, { FC, CSSProperties } from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
+
+export interface SideBarButtons {
+  text: string;
+  link: URL | string;
+}
 
 interface SideBarProps {
   active: boolean;
+  author: string;
+  sidebar_buttons: SideBarButtons[];
 }
 
-const SideBarComponent = styled.div<SideBarProps>`
+const SideBarComponent = styled.div<{ active: boolean }>`
   visibility: ${({ active }) => (active ? "unset" : "hidden")};
 `;
 
-export const SideBar: FC<SideBarProps> = ({ active }) => {
+export const SideBar: FC<SideBarProps> = ({ active, sidebar_buttons, author }) => {
   return (
     <SideBarComponent id="side-bar" active={active}>
-      <div id="logo">cairbyte71</div>
+      <div id="logo">{author}</div>
       <div id="routes-buttons">
-        <div
-          className="button"
-          onClick={() => window.open("https://github.com/CA1R7/ca1r7.github.io")}
-        >
-          view source
-        </div>
+        {sidebar_buttons.map((link_obj, i) => (
+          <div className="button" key={`link-${i}`} onClick={() => window.open(link_obj.link)}>
+            {link_obj.text}
+          </div>
+        ))}
       </div>
     </SideBarComponent>
   );

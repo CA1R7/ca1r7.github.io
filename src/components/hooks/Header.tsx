@@ -36,33 +36,36 @@ const ImageAnimation = styled.img<{ active: boolean }>`
   transition: 1s cubic-bezier(0.86, 0, 0.07, 1);
 `;
 
-interface LinksType {
+export interface LinksType {
   title: string;
   link: string | URL;
 }
 
-export const Header: FC = () => {
-  const { navbar_activated } = useSelector<StateInterface, HeaderReducer>(({ header }) => header);
+interface HeaderProps {
+  mine_image?: URL | string | null;
+  description: JSX.Element;
+  links: LinksType[];
+}
 
-  const links: LinksType[] = [
-    { title: "Github", link: "https://github.com/CA1R7" },
-    { title: "LinkedIn", link: "https://www.linkedin.com/in/mohammed-amine-3490061a5" },
-  ];
+export const Header: FC<HeaderProps> = ({ links, description, mine_image }): JSX.Element => {
+  const { navbar_activated } = useSelector<StateInterface, HeaderReducer>(({ header }) => header);
 
   return (
     <header>
       <div id="content">
         <div id="describe-content">
           <div className="content">
-            <CircleImage id="circle-profile" imageUrl={MineImage} active={navbar_activated} />
+            <CircleImage
+              id="circle-profile"
+              imageUrl={mine_image || MineImage}
+              active={navbar_activated}
+            />
             <div id="text-content">
               <TextAnimation id="title" active={navbar_activated}>
                 WHAT ABOUT ME ?
               </TextAnimation>
               <TextAnimation id="pargph" active={navbar_activated}>
-                <span>17 y/o</span>. TS/JS Developer &amp; UI/UX Designer, Mohammed Amine (
-                <span>cairbyte71</span>) from Algeria still studing foreign languages (
-                <span>Deutsch</span>) also learning programing.
+                {description}
               </TextAnimation>
               <TextAnimation id="links" active={navbar_activated}>
                 Links:
