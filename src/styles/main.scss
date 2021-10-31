@@ -3,6 +3,7 @@
 
 $primary-background: #000;
 $main-gradient: linear-gradient(180deg, #7000cc, #ca00cc);
+$main-color: #7000cc;
 $primary-white-color: rgb(221, 221, 221);
 $primary-hidden-color: rgb(151, 151, 151);
 $titles-font: "Oxanium", sans-serif;
@@ -19,8 +20,46 @@ body {
   padding: 0;
   margin: 0;
   background: $primary-background;
+  #loading-screen {
+    
+  background: $primary-background;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999999999999;
+    text-align: center;
+    .middle-content {
+      .text-middle {
+        font-family: "Oxanium", sans-serif;
+        font-size: 30px;
+        margin: 10px auto;
+        text-transform: uppercase;
+        @include gradientText();
+      }
+      .fill-loader {
+        display: block !important;
+        width: 20px;
+        height: 20px;
+        margin: 0 auto;
+        text-indent: -9999em;
+        border-radius: 50px;
+        border-left: 2px solid $main-color;
+        animation: loop 0.2s infinite linear;
+      }
+      @keyframes loop {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
   #side-bar {
-    display: flex;;
+    display: flex;
     justify-content: space-between;
     position: fixed;
     top: 0;
