@@ -59,7 +59,7 @@ export const HomePage: FC = () => {
               <div className="text-section">
                 {accountData?.spotify?.song ? (
                   <div className="title">
-                    on {getMiniText(accountData?.spotify?.song)}
+                    {getMiniText(accountData?.spotify?.song)}
                   </div>
                 ) : null}
                 {accountData?.spotify.artist ? (
