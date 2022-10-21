@@ -1,0 +1,286 @@
+$main-color: #6139e6;
+$main-background: #000000;
+$white-opacity: rgba(255, 255, 255, 0.11);
+$white-opacity-second: rgba(255, 255, 255, 0.095);
+$black-opacity: rgba(0, 0, 0, 0.24);
+$black-opacity-second: rgba(0, 0, 0, 0.021);
+$hidden-color: rgb(102, 102, 102);
+$hidden-text-color: #adadad;
+$error-color: rgb(199, 77, 77);
+$success-color: rgb(64, 224, 176);
+
+::-moz-selection {
+  background: $main-color;
+}
+
+::selection {
+  background: $main-color;
+}
+
+* {
+  user-select: none;
+  font-family: "Karla", sans-serif;
+  transition: 0.25s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+input {
+  user-select: unset;
+}
+
+body {
+  background: $main-background;
+  padding: 0;
+}
+
+canvas {
+  cursor: none;
+  &.animated {
+    animation: fadeIn 1s ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+::-webkit-scrollbar {
+  background-color: rgba(255, 255, 255, 0.021);
+  border-radius: 20px;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb:window-inactive,
+::-webkit-scrollbar-thumb {
+  background-color: rgb(151, 151, 151);
+  border-radius: 20px;
+}
+
+.button {
+  cursor: pointer;
+}
+
+#app,
+#main-screen,
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#loading-screen {
+  background-color: $main-background;
+  z-index: 9999999;
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#home-page {
+  img {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+  }
+  #side-bar-home {
+    width: 100%;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.192);
+    display: flex;
+    justify-content: space-between;
+    .buttons {
+      display: flex;
+      .button {
+        margin: 10px;
+        text-align: center;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.192);
+      }
+    }
+  }
+  .content {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    .profile-preview {
+      padding: 10px 20px;
+      background-color: rgba(255, 255, 255, 0.122);
+      display: flex;
+      border-radius: 10px;
+      .circle-avatar {
+        width: 50px;
+        height: 50px;
+        background-size: cover;
+        border-radius: 50px;
+        background-color: rgba(255, 255, 255, 0.122);
+        position: relative;
+        .status {
+          position: absolute;
+          bottom: 2px;
+          right: 2px;
+          border-radius: 10px;
+          width: 13px;
+          height: 13px;
+          background-color: #fff;
+          &.dnd {
+            background-color: #ed4245;
+            box-shadow: #ed4245 0 0 10px;
+          }
+          &.online {
+            background-color: #2ecc71;
+            box-shadow: #2ecc71 0 0 10px;
+          }
+          &.offline {
+            background-color: #747f8d;
+          }
+        }
+      }
+      .text-section {
+        margin: 10px;
+        .name {
+          color: #fff;
+          .tag {
+            color: rgb(182, 182, 182);
+          }
+        }
+        .id {
+          font-size: 13px;
+          color: rgb(131, 131, 131);
+        }
+      }
+    }
+    .spotify-preview {
+      margin: 10px auto;
+      padding: 10px 20px;
+      background-color: rgba(255, 255, 255, 0.122);
+      border-radius: 10px;
+      .title-bar {
+        justify-content: space-between;
+        width: calc(100% - 20px);
+        .title-inside {
+          color: #fff;
+          font-size: 15px;
+        }
+        .img {
+          img {
+            width: 18px;
+          }
+        }
+      }
+      .title-bar,
+      .album {
+        display: flex;
+      }
+
+      .album {
+        width: 100%;
+        padding: 10px 0;
+        .album-img {
+          width: 50px;
+          height: 50px;
+          position: relative;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+          }
+        }
+        .text-section {
+          margin: 0 10px;
+          .title {
+            color: #fff;
+            font-size: 15px;
+          }
+          .artist,
+          .album-text {
+            height: max-content;
+            font-size: 13px;
+            color: rgb(187, 187, 187);
+          }
+        }
+      }
+    }
+  }
+  .links {
+    .link {
+      font-size: 13px;
+      font-family: "Oxanium", sans-serif;
+      color: rgba(255, 255, 255, 0.46);
+      background-color: rgba(255, 255, 255, 0.122);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 3px;
+      position: fixed;
+      right: 20px;
+      top: 20px;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        height: 50%;
+        background-color: rgba(255, 255, 255, 0.579);
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &::before {
+        right: 0;
+      }
+      &::after {
+        left: 0;
+      }
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  #bg-home {
+    transform: scale(1.5);
+    animation: fadeInBg 0.8s ease-in-out;
+  }
+}
+
+@keyframes fadeInBg {
+  0% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+@keyframes loader-animation {
+  0% {
+    left: 0;
+    width: 0;
+  }
+  50% {
+    left: 50%;
+    width: 50%;
+  }
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
