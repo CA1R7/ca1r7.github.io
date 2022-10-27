@@ -1,0 +1,219 @@
+@import "func";
+@import "generale";
+
+$primary-background: #000;
+$main-gradient: linear-gradient(180deg, #7000cc, #ca00cc);
+$primary-white-color: rgb(221, 221, 221);
+$primary-hidden-color: rgb(151, 151, 151);
+$titles-font: "Oxanium", sans-serif;
+$main-color-success: rgb(27, 165, 96);
+$main-color-error: rgb(165, 27, 27);
+
+* {
+  font-family: "Karla", sans-serif;
+  user-select: none;
+  color: $primary-hidden-color;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: $primary-background;
+  #side-bar {
+    display: flex;;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 0;
+    background: rgba(255, 255, 255, 0.062);
+    #logo {
+      font-family: "Oxanium", monospace, sans-serif;
+      font-size: 20px;
+      text-transform: uppercase;
+      margin: 10px;
+      @include gradientText();
+    }
+  }
+  header {
+    width: 100%;
+    height: 100vh;
+    #content {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 10px;
+      #describe-content {
+        position: relative;
+        .content {
+          display: flex;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          #circle-profile {
+            margin: 0 10px;
+            &,
+            &::after {
+              display: inline-block;
+              content: "";
+              width: 200px;
+              height: 200px;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.185);
+              border-radius: 100px;
+              background-image: $main-gradient;
+              transition: 0.25s cubic-bezier(0.86, 0, 0.07, 1);
+            }
+            &::after {
+              margin: -30px 50px;
+              background-position-y: 320px;
+              filter: grayscale(1);
+            }
+            &:hover::after {
+              margin: -10px 30px;
+              filter: unset;
+            }
+          }
+          #text-content {
+            width: 400px;
+            margin: 10px 60px;
+            #title {
+              font-size: 40px;
+              font-family: $titles-font;
+              transition: 0.25s cubic-bezier(0.86, 0, 0.07, 1);
+              @include gradientText();
+            }
+            #pargph {
+              color: $primary-hidden-color;
+              span {
+                color: $primary-white-color;
+                &:hover {
+                  @include gradientText();
+                }
+              }
+            }
+            #links {
+              margin-top: 20px;
+              color: $primary-white-color;
+              span {
+                margin: 0 0 0 5px;
+                color: $primary-hidden-color;
+                cursor: pointer;
+                border-bottom: 1px solid #7000cc;
+                &:hover {
+                  @include gradientText();
+                }
+              }
+            }
+            &:hover #title {
+              margin: 0 10px;
+            }
+          }
+        }
+      }
+      #mine-process-image {
+        margin: 125px 50px;
+        img {
+          width: 400px;
+          animation: scaleImage 2.5s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+        @keyframes scaleImage {
+          from {
+            transform: scale(1.1);
+          }
+          to {
+            transform: scale(1);
+          }
+        }
+        @media (max-width: 1000px) {
+          img {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  #projects {
+    width: 100%;
+    height: 95vh;
+    .content {
+      display: inline-block;
+      margin: 30px 10px;
+      .count-page {
+        font-size: 15px;
+        color: $primary-white-color;
+        font-family: monospace, sans-serif;
+        text-transform: uppercase;
+      }
+      .title,
+      .description {
+        margin: 5px;
+      }
+      .title {
+        font-size: 30px;
+        font-family: $titles-font;
+        text-transform: uppercase;
+        @include gradientText();
+      }
+      .description {
+        font-size: 15px;
+        color: $primary-hidden-color;
+      }
+      .cards {
+        display: flex;
+        margin: 30px 10px;
+        .card {
+          .label {
+            font-size: 13px;
+            font-family: $titles-font;
+            text-transform: uppercase;
+            margin-top: 10px;
+            @include gradientText();
+          }
+          .answer {
+            color: $primary-white-color;
+          }
+          .wrap {
+            width: 100%;
+            margin: 10px auto 0 auto;
+            display: flex;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.052);
+            border-radius: 3px;
+            color: $primary-white-color;
+            .status {
+              font-size: 15px;
+              margin: 12px 10px;
+              span {
+                text-transform: uppercase;
+                color: $main-color-error;
+                &.active {
+                  color: $main-color-success;
+                }
+              }
+            }
+            #button-visit {
+              display: inline-block;
+              padding: 5px 10px;
+              font-size: 15px;
+              text-align: center;
+              height: 20px;
+              margin: 5px;
+              border: 1px solid rgba(255, 255, 255, 0.072);
+              border-radius: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+  footer {
+    margin: 0 0 20px 0;
+    text-align: center;
+    font-size: 15px;
+    color: $primary-hidden-color;
+    span {
+      @include gradientText();
+    }
+  }
+}
