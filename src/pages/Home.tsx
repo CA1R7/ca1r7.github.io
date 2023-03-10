@@ -47,7 +47,7 @@ export const HomePage: FC = () => {
         {accountData?.spotify ? (
           <div className="spotify-preview">
             <div className="title-bar">
-              <div className="title-inside">LISENING TO SPOTIFY</div>
+              <div className="title-inside">LISTENING TO SPOTIFY</div>
               <div className="img">
                 <img src={spotifyImage} alt="" />
               </div>
